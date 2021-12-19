@@ -2,6 +2,8 @@ Convert between Arabic and Roman numbers. Supports also substraction, addition, 
 ```
 nimble install https://gitlab.com/jiiihpeeh/romannumerals/
 ```
+Documentation
+https://gl.githack.com/jiiihpeeh/romannumerals/raw/main/htmldocs/romannumerals.html
 
 Examples
 
@@ -11,15 +13,7 @@ for i in 1..3214:
     discard i.arabicToRoman
 doAssert arabicToRoman(99) == "XCIX"
 doAssert arabicToRoman(994) == "CMXCIV"
-var rmn: string
-try:
-    rmn = arabicToRoman(-34)
-except ValueError:
-    rmn = "VII"
-doAssert rmn == "VII"
 
-doAssert romanToArabic("XXIV") == 24
-doAssert romanToArabic("MXXViI", false) == 1027
 var num: int
 try:
     num = romanToArabic("ViI", true)
@@ -31,23 +25,13 @@ try:
 except ValueError:
     num = 9878
 doAssert num == 9878
-var
-    a = 5.toRoman
-    b = "VI".toRoman
-    c = newRoman()
+
 echo c
 c = a + b
 echo $c
 doAssert "XI" == $ c
 doAssert a < b
-doAssert 10.toRoman < c
-var d = c - "II".toRoman
-doAssert d == "IX".toRoman
-doAssert (d * 3) == "XXVII".toRoman
-d += 3
-doAssert d == "xii".toRoman
-d -= 4
-doAssert d.arabic == 8
+
 echo "Success"
 ```
 
