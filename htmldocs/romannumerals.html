@@ -17,7 +17,7 @@
 <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600' rel='stylesheet' type='text/css'/>
 
 <!-- CSS -->
-<title>src/romannumerals</title>
+<title>romannumerals</title>
 <link rel="stylesheet" type="text/css" href="nimdoc.out.css">
 
 <script type="text/javascript" src="dochack.js"></script>
@@ -34,6 +34,7 @@ function main() {
     }
   }
 
+  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
   function switchTheme(e) {
       if (e.target.checked) {
           document.documentElement.setAttribute('data-theme', 'dark');
@@ -44,32 +45,24 @@ function main() {
       }
   }
 
-  const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-  if (toggleSwitch !== null) {
-    toggleSwitch.addEventListener('change', switchTheme, false);
-  }
+  toggleSwitch.addEventListener('change', switchTheme, false);
 
-  var currentTheme = localStorage.getItem('theme');
-  if (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    currentTheme = 'dark';
-  }
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
   if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
 
-    if (currentTheme === 'dark' && toggleSwitch !== null) {
+    if (currentTheme === 'dark') {
       toggleSwitch.checked = true;
     }
   }
 }
-
-window.addEventListener('DOMContentLoaded', main);
 </script>
 
 </head>
-<body>
+<body onload="main()">
 <div class="document" id="documentId">
   <div class="container">
-    <h1 class="title">src/romannumerals</h1>
+    <h1 class="title">romannumerals</h1>
     <div class="row">
   <div class="three columns">
   <div class="theme-switch-wrapper">
@@ -101,149 +94,149 @@ window.addEventListener('DOMContentLoaded', main);
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">!=
-      <li><a class="reference" href="#%21%3D%2CRoman%2CRoman"
-    title="`!=`(a, b: Roman): bool">`!=`(a, b: Roman): bool</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">$
-      <li><a class="reference" href="#%24%2CRoman"
-    title="`$`(r: Roman): string">`$`(r: Roman): string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">*
-      <li><a class="reference" href="#%2A%2CRoman%2CRoman"
-    title="`*`(a, b: Roman): Roman">`*`(a, b: Roman): Roman</a></li>
-  <li><a class="reference" href="#%2A%2Cint%2CRoman"
-    title="`*`(a: int; b: Roman): Roman">`*`(a: int; b: Roman): Roman</a></li>
-  <li><a class="reference" href="#%2A%2CRoman%2Cint"
-    title="`*`(a: Roman; b: int): Roman">`*`(a: Roman; b: int): Roman</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">*=
-      <li><a class="reference" href="#%2A%3D%2CRoman%2Cint"
-    title="`*=`(a: var Roman; b: int)">`*=`(a: var Roman; b: int)</a></li>
-  <li><a class="reference" href="#%2A%3D%2CRoman%2CRoman"
-    title="`*=`(a: var Roman; b: Roman)">`*=`(a: var Roman; b: Roman)</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">+
-      <li><a class="reference" href="#%2B%2CRoman%2CRoman"
-    title="`+`(a, b: Roman): Roman">`+`(a, b: Roman): Roman</a></li>
-  <li><a class="reference" href="#%2B%2Cint%2CRoman"
-    title="`+`(a: int; b: Roman): Roman">`+`(a: int; b: Roman): Roman</a></li>
-  <li><a class="reference" href="#%2B%2CRoman%2Cint"
-    title="`+`(a: Roman; b: int): Roman">`+`(a: Roman; b: int): Roman</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">+=
-      <li><a class="reference" href="#%2B%3D%2CRoman%2Cint"
-    title="`+=`(a: var Roman; b: int)">`+=`(a: var Roman; b: int)</a></li>
-  <li><a class="reference" href="#%2B%3D%2CRoman%2CRoman"
-    title="`+=`(a: var Roman; b: Roman)">`+=`(a: var Roman; b: Roman)</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">-
-      <li><a class="reference" href="#-%2CRoman%2CRoman"
-    title="`-`(a, b: Roman): Roman">`-`(a, b: Roman): Roman</a></li>
-  <li><a class="reference" href="#-%2Cint%2CRoman"
-    title="`-`(a: int; b: Roman): Roman">`-`(a: int; b: Roman): Roman</a></li>
-  <li><a class="reference" href="#-%2CRoman%2Cint"
-    title="`-`(a: Roman; b: int): Roman">`-`(a: Roman; b: int): Roman</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">-=
-      <li><a class="reference" href="#-%3D%2CRoman%2Cint"
-    title="`-=`(a: var Roman; b: int)">`-=`(a: var Roman; b: int)</a></li>
-  <li><a class="reference" href="#-%3D%2CRoman%2CRoman"
-    title="`-=`(a: var Roman; b: Roman)">`-=`(a: var Roman; b: Roman)</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section"><
-      <li><a class="reference" href="#%3C%2CRoman%2CRoman"
-    title="`&lt;`(a, b: Roman): bool">`&lt;`(a, b: Roman): bool</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section"><=
-      <li><a class="reference" href="#%3C%3D%2CRoman%2CRoman"
-    title="`&lt;=`(a, b: Roman): bool">`&lt;=`(a, b: Roman): bool</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">==
-      <li><a class="reference" href="#%3D%3D%2CRoman%2CRoman"
-    title="`==`(a, b: Roman): bool">`==`(a, b: Roman): bool</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">>
-      <li><a class="reference" href="#%3E%2CRoman%2CRoman"
-    title="`&gt;`(a, b: Roman): bool">`&gt;`(a, b: Roman): bool</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">>=
-      <li><a class="reference" href="#%3E%3D%2CRoman%2CRoman"
-    title="`&gt;=`(a, b: Roman): bool">`&gt;=`(a, b: Roman): bool</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">arabic
-      <li><a class="reference" href="#arabic%2CRoman"
-    title="arabic(r: Roman): int">arabic(r: Roman): int</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">arabicToRoman
-      <li><a class="reference" href="#arabicToRoman%2Cint"
-    title="arabicToRoman(n: int): string">arabicToRoman(n: int): string</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">div
-      <li><a class="reference" href="#div%2CRoman%2CRoman"
-    title="`div`(a, b: Roman): Roman">`div`(a, b: Roman): Roman</a></li>
-  <li><a class="reference" href="#div%2Cint%2CRoman"
-    title="`div`(a: int; b: Roman): Roman">`div`(a: int; b: Roman): Roman</a></li>
-  <li><a class="reference" href="#div%2CRoman%2Cint"
-    title="`div`(a: Roman; b: int): Roman">`div`(a: Roman; b: int): Roman</a></li>
-
-  </ul>
-  <ul class="simple nested-toc-section">int
-      <li><a class="reference" href="#int%2CRoman"
-    title="int(r: Roman): int">int(r: Roman): int</a></li>
+      <ul class="simple nested-toc-section">+=
+      <li><a class="reference" href="#%2B%3D%2CRoman%2CRoman"
+    title="`+=`(a: var Roman; b: Roman)">+=,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#%2B%3D%2CRoman%2Cint"
+    title="`+=`(a: var Roman; b: int)">+=,<wbr>Roman,<wbr>int</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">mod
       <li><a class="reference" href="#mod%2CRoman%2CRoman"
-    title="`mod`(a, b: Roman): Roman">`mod`(a, b: Roman): Roman</a></li>
+    title="`mod`(a, b: Roman): Roman">mod,<wbr>Roman,<wbr>Roman</a></li>
   <li><a class="reference" href="#mod%2Cint%2CRoman"
-    title="`mod`(a: int; b: Roman): Roman">`mod`(a: int; b: Roman): Roman</a></li>
+    title="`mod`(a: int; b: Roman): Roman">mod,<wbr>int,<wbr>Roman</a></li>
   <li><a class="reference" href="#mod%2CRoman%2Cint"
-    title="`mod`(a: Roman; b: int): Roman">`mod`(a: Roman; b: int): Roman</a></li>
+    title="`mod`(a: Roman; b: int): Roman">mod,<wbr>Roman,<wbr>int</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">newRoman
-      <li><a class="reference" href="#newRoman"
-    title="newRoman(): Roman">newRoman(): Roman</a></li>
+  <ul class="simple nested-toc-section">>=
+      <li><a class="reference" href="#%3E%3D%2CRoman%2CRoman"
+    title="`&gt;=`(a, b: Roman): bool">>=,<wbr>Roman,<wbr>Roman</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">roman
-      <li><a class="reference" href="#roman%2CRoman"
-    title="roman(r: Roman): string">roman(r: Roman): string</a></li>
+  <ul class="simple nested-toc-section">$
+      <li><a class="reference" href="#%24%2CRoman"
+    title="`$`(r: Roman): string">$,<wbr>Roman</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">romanToArabic
-      <li><a class="reference" href="#romanToArabic%2Cstring"
-    title="romanToArabic(s: string): int">romanToArabic(s: string): int</a></li>
-  <li><a class="reference" href="#romanToArabic%2Cstring%2Cbool"
-    title="romanToArabic(s: string; caseSensitive: bool): int">romanToArabic(s: string; caseSensitive: bool): int</a></li>
+  <ul class="simple nested-toc-section">arabic
+      <li><a class="reference" href="#arabic%2CRoman"
+    title="arabic(r: Roman): int">arabic,<wbr>Roman</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">toRoman
-      <li><a class="reference" href="#toRoman%2Cint"
-    title="toRoman(n: int): Roman">toRoman(n: int): Roman</a></li>
-  <li><a class="reference" href="#toRoman%2Cstring"
-    title="toRoman(s: string): Roman">toRoman(s: string): Roman</a></li>
+  <ul class="simple nested-toc-section"><=
+      <li><a class="reference" href="#%3C%3D%2CRoman%2CRoman"
+    title="`&lt;=`(a, b: Roman): bool"><=,<wbr>Roman,<wbr>Roman</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">useRomanCache
       <li><a class="reference" href="#useRomanCache%2Cbool%2Cbool"
-    title="useRomanCache(state: bool = true; clear: bool = true)">useRomanCache(state: bool = true; clear: bool = true)</a></li>
+    title="useRomanCache(state: bool = true; clear: bool = true)">useRomanCache,<wbr>bool,<wbr>bool</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section"><
+      <li><a class="reference" href="#%3C%2CRoman%2CRoman"
+    title="`&lt;`(a, b: Roman): bool"><,<wbr>Roman,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">div
+      <li><a class="reference" href="#div%2CRoman%2CRoman"
+    title="`div`(a, b: Roman): Roman">div,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#div%2Cint%2CRoman"
+    title="`div`(a: int; b: Roman): Roman">div,<wbr>int,<wbr>Roman</a></li>
+  <li><a class="reference" href="#div%2CRoman%2Cint"
+    title="`div`(a: Roman; b: int): Roman">div,<wbr>Roman,<wbr>int</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*
+      <li><a class="reference" href="#%2A%2CRoman%2CRoman"
+    title="`*`(a, b: Roman): Roman">*,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#%2A%2Cint%2CRoman"
+    title="`*`(a: int; b: Roman): Roman">*,<wbr>int,<wbr>Roman</a></li>
+  <li><a class="reference" href="#%2A%2CRoman%2Cint"
+    title="`*`(a: Roman; b: int): Roman">*,<wbr>Roman,<wbr>int</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">>
+      <li><a class="reference" href="#%3E%2CRoman%2CRoman"
+    title="`&gt;`(a, b: Roman): bool">>,<wbr>Roman,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-
+      <li><a class="reference" href="#-%2CRoman%2CRoman"
+    title="`-`(a, b: Roman): Roman">-,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#-%2CRoman%2Cint"
+    title="`-`(a: Roman; b: int): Roman">-,<wbr>Roman,<wbr>int</a></li>
+  <li><a class="reference" href="#-%2Cint%2CRoman"
+    title="`-`(a: int; b: Roman): Roman">-,<wbr>int,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">int
+      <li><a class="reference" href="#int%2CRoman"
+    title="int(r: Roman): int">int,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">toRoman
+      <li><a class="reference" href="#toRoman%2Cstring"
+    title="toRoman(s: string): Roman">toRoman,<wbr>string</a></li>
+  <li><a class="reference" href="#toRoman%2Cint"
+    title="toRoman(n: int): Roman">toRoman,<wbr>int</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">-=
+      <li><a class="reference" href="#-%3D%2CRoman%2CRoman"
+    title="`-=`(a: var Roman; b: Roman)">-=,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#-%3D%2CRoman%2Cint"
+    title="`-=`(a: var Roman; b: int)">-=,<wbr>Roman,<wbr>int</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">roman
+      <li><a class="reference" href="#roman%2CRoman"
+    title="roman(r: Roman): string">roman,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">arabicToRoman
+      <li><a class="reference" href="#arabicToRoman%2Cint"
+    title="arabicToRoman(n: int): string">arabicToRoman,<wbr>int</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">!=
+      <li><a class="reference" href="#%21%3D%2CRoman%2CRoman"
+    title="`!=`(a, b: Roman): bool">!=,<wbr>Roman,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">romanToArabic
+      <li><a class="reference" href="#romanToArabic%2Cstring"
+    title="romanToArabic(s: string): int">romanToArabic,<wbr>string</a></li>
+  <li><a class="reference" href="#romanToArabic%2Cstring%2Cbool"
+    title="romanToArabic(s: string; caseSensitive: bool): int">romanToArabic,<wbr>string,<wbr>bool</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">==
+      <li><a class="reference" href="#%3D%3D%2CRoman%2CRoman"
+    title="`==`(a, b: Roman): bool">==,<wbr>Roman,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">*=
+      <li><a class="reference" href="#%2A%3D%2CRoman%2CRoman"
+    title="`*=`(a: var Roman; b: Roman)">*=,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#%2A%3D%2CRoman%2Cint"
+    title="`*=`(a: var Roman; b: int)">*=,<wbr>Roman,<wbr>int</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">+
+      <li><a class="reference" href="#%2B%2CRoman%2CRoman"
+    title="`+`(a, b: Roman): Roman">+,<wbr>Roman,<wbr>Roman</a></li>
+  <li><a class="reference" href="#%2B%2CRoman%2Cint"
+    title="`+`(a: Roman; b: int): Roman">+,<wbr>Roman,<wbr>int</a></li>
+  <li><a class="reference" href="#%2B%2Cint%2CRoman"
+    title="`+`(a: int; b: Roman): Roman">+,<wbr>int,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">newRoman
+      <li><a class="reference" href="#newRoman"
+    title="newRoman(): Roman">newRoman</a></li>
 
   </ul>
 
@@ -253,7 +246,6 @@ window.addEventListener('DOMContentLoaded', main);
 </ul>
 
   </div>
-  
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
@@ -261,348 +253,310 @@ window.addEventListener('DOMContentLoaded', main);
   <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
-<div id="!=,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%21%3D%2CRoman%2CRoman"><span class="Identifier">`!=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="$,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%24%2CRoman"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">rt</span> <span class="Operator">=</span> <span class="FloatNumber">20.</span><span class="Identifier">toRoman</span>
-<span class="Identifier">doAssert</span> <span class="Operator">$</span><span class="Identifier">rt</span> <span class="Operator">==</span> <span class="StringLit">&quot;XX&quot;</span></pre>
-
-</dd>
-</div>
-<div id="*=,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2A%3D%2CRoman%2Cint"><span class="Identifier">`*=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="*=,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2A%3D%2CRoman%2CRoman"><span class="Identifier">`*=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="*,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2A%2CRoman%2CRoman"><span class="Identifier">`*`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="*,int,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2A%2Cint%2CRoman"><span class="Identifier">`*`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="*,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2A%2CRoman%2Cint"><span class="Identifier">`*`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="+=,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2B%3D%2CRoman%2Cint"><span class="Identifier">`+=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">rnf</span> <span class="Operator">=</span> <span class="FloatNumber">20.</span><span class="Identifier">toRoman</span>
-<span class="Identifier">rnf</span> <span class="Operator">+=</span> <span class="DecNumber">2151</span>
-<span class="Identifier">doAssert</span> <span class="Operator">$</span><span class="Identifier">rnf</span> <span class="Operator">==</span> <span class="StringLit">&quot;MMCLXXI&quot;</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">rnf</span> <span class="Operator">==</span> <span class="FloatNumber">2171.</span><span class="Identifier">toRoman</span></pre>
-
-</dd>
-</div>
-<div id="+=,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2B%3D%2CRoman%2CRoman"><span class="Identifier">`+=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="+,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2B%2CRoman%2CRoman"><span class="Identifier">`+`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="+,int,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2B%2Cint%2CRoman"><span class="Identifier">`+`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="+,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#%2B%2CRoman%2Cint"><span class="Identifier">`+`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="-=,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#-%3D%2CRoman%2Cint"><span class="Identifier">`-=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="-=,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#-%3D%2CRoman%2CRoman"><span class="Identifier">`-=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="-,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#-%2CRoman%2CRoman"><span class="Identifier">`-`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="-,int,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#-%2Cint%2CRoman"><span class="Identifier">`-`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="-,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#-%2CRoman%2Cint"><span class="Identifier">`-`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="<=,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%3C%3D%2CRoman%2CRoman"><span class="Identifier">`&lt;=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="<,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%3C%2CRoman%2CRoman"><span class="Identifier">`&lt;`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="==,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%3D%3D%2CRoman%2CRoman"><span class="Identifier">`==`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id=">=,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%3E%3D%2CRoman%2CRoman"><span class="Identifier">`&gt;=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id=">,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#%3E%2CRoman%2CRoman"><span class="Identifier">`&gt;`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">firstroman</span> <span class="Operator">=</span> <span class="StringLit">&quot;XXXV&quot;</span><span class="Operator">.</span><span class="Identifier">toRoman</span>
-<span class="Keyword">var</span> <span class="Identifier">secondroman</span> <span class="Operator">=</span> <span class="FloatNumber">120.</span><span class="Identifier">toRoman</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">secondroman</span> <span class="Operator">&gt;</span> <span class="Identifier">firstroman</span></pre>
-
-</dd>
-</div>
-<div id="div,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#div%2CRoman%2CRoman"><span class="Identifier">`div`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="div,int,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#div%2Cint%2CRoman"><span class="Identifier">`div`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="div,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#div%2CRoman%2Cint"><span class="Identifier">`div`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="mod,Roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#mod%2CRoman%2CRoman"><span class="Identifier">`mod`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="mod,int,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#mod%2Cint%2CRoman"><span class="Identifier">`mod`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="mod,Roman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#mod%2CRoman%2Cint"><span class="Identifier">`mod`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-
-
-</dd>
-</div>
-<div id="arabic,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#arabic%2CRoman"><span class="Identifier">arabic</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Same as int
-
-</dd>
-</div>
-<div id="arabicToRoman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#arabicToRoman%2Cint"><span class="Identifier">arabicToRoman</span></a><span class="Other">(</span><span class="Identifier">n</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<a id="arabicToRoman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#arabicToRoman%2Cint"><span class="Identifier">arabicToRoman</span></a><span class="Other">(</span><span class="Identifier">n</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts an interger (&gt; 0) to a roman string.
 <p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">roman</span> <span class="Operator">=</span> <span class="Identifier">arabicToRoman</span><span class="Punctuation">(</span><span class="DecNumber">24</span><span class="Punctuation">)</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">roman</span> <span class="Operator">==</span> <span class="StringLit">&quot;XXIV&quot;</span></pre>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">roman</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">arabicToRoman</span><span class="Punctuation">(</span><span class="DecNumber">24</span><span class="Punctuation">)</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">roman</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="StringLit">&quot;XXIV&quot;</span></pre>
 
 </dd>
-</div>
-<div id="int,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#int%2CRoman"><span class="Identifier">int</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<a id="useRomanCache,bool,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#useRomanCache%2Cbool%2Cbool"><span class="Identifier">useRomanCache</span></a><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">;</span> <span class="Identifier">clear</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma">
+    <span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-
-
-</dd>
-</div>
-<div id="newRoman">
-<dt><pre><span class="Keyword">proc</span> <a href="#newRoman"><span class="Identifier">newRoman</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Generates a new Roman [arabic:0, roman: &quot;&quot;].
+Enable/disable and generates/clears searchable tables for roman / arabic  numerals for values 1..999. Can be used for &gt; 1000 (for their basis).
 <p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">newr</span> <span class="Operator">=</span> <span class="Identifier">newRoman</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
-<span class="Identifier">newr</span> <span class="Operator">+=</span> <span class="DecNumber">1</span>
-<span class="Identifier">newr</span> <span class="Operator">*=</span> <span class="DecNumber">10</span>
-
-<span class="Identifier">doAssert</span> <span class="StringLit">&quot;X&quot;</span> <span class="Operator">==</span> <span class="Operator">$</span><span class="Identifier">newr</span></pre>
+<pre class="listing"><span class="Keyword">import</span><span class="Whitespace"> </span><span class="Identifier">romannumerals</span><span class="Whitespace">
+</span><span class="Identifier">useRomanCache</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre>
 
 </dd>
-</div>
-<div id="roman,Roman">
-<dt><pre><span class="Keyword">proc</span> <a href="#roman%2CRoman"><span class="Identifier">roman</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Same as $
-
-</dd>
-</div>
-<div id="romanToArabic,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#romanToArabic%2Cstring"><span class="Identifier">romanToArabic</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<a id="romanToArabic,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#romanToArabic%2Cstring"><span class="Identifier">romanToArabic</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts a roman string to an int.
 <p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">arabic</span> <span class="Operator">=</span> <span class="Identifier">romanToArabic</span><span class="Punctuation">(</span><span class="StringLit">&quot;XXXV&quot;</span><span class="Punctuation">)</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">arabic</span> <span class="Operator">==</span> <span class="DecNumber">35</span></pre>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">arabic</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">romanToArabic</span><span class="Punctuation">(</span><span class="StringLit">&quot;XXXV&quot;</span><span class="Punctuation">)</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">arabic</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="DecNumber">35</span></pre>
 
 </dd>
-</div>
-<div id="romanToArabic,string,bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#romanToArabic%2Cstring%2Cbool"><span class="Identifier">romanToArabic</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">caseSensitive</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
-    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<a id="romanToArabic,string,bool"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#romanToArabic%2Cstring%2Cbool"><span class="Identifier">romanToArabic</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">caseSensitive</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
+    <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts a roman string to an int. Checks that cases are uniform.
 
 </dd>
-</div>
-<div id="toRoman,int">
-<dt><pre><span class="Keyword">proc</span> <a href="#toRoman%2Cint"><span class="Identifier">toRoman</span></a><span class="Other">(</span><span class="Identifier">n</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
-<dd>
-
-Converts an integer to the Roman type.
-<p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">roman</span> <span class="Operator">=</span> <span class="FloatNumber">33.</span><span class="Identifier">toRoman</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">roman</span><span class="Operator">.</span><span class="Identifier">roman</span> <span class="Operator">==</span> <span class="StringLit">&quot;XXXIII&quot;</span></pre>
-
-</dd>
-</div>
-<div id="toRoman,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#toRoman%2Cstring"><span class="Identifier">toRoman</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<a id="toRoman,string"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#toRoman%2Cstring"><span class="Identifier">toRoman</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 Converts a roman string to the Roman type.
 <p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">var</span> <span class="Identifier">romantype</span> <span class="Operator">=</span> <span class="StringLit">&quot;XXXV&quot;</span><span class="Operator">.</span><span class="Identifier">toRoman</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">romantype</span><span class="Operator">.</span><span class="Identifier">arabic</span> <span class="Operator">==</span> <span class="DecNumber">35</span>
-<span class="Identifier">romantype</span> <span class="Operator">=</span> <span class="StringLit">&quot;ii&quot;</span><span class="Operator">.</span><span class="Identifier">toRoman</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">romantype</span><span class="Operator">.</span><span class="Identifier">arabic</span> <span class="Operator">==</span> <span class="DecNumber">2</span>
-<span class="Identifier">doAssert</span> <span class="Identifier">romantype</span><span class="Operator">.</span><span class="Identifier">roman</span> <span class="Operator">==</span> <span class="StringLit">&quot;II&quot;</span></pre>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">romantype</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="StringLit">&quot;XXXV&quot;</span><span class="Operator">.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">romantype</span><span class="Operator">.</span><span class="Identifier">arabic</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="DecNumber">35</span><span class="Whitespace">
+</span><span class="Identifier">romantype</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="StringLit">&quot;ii&quot;</span><span class="Operator">.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">romantype</span><span class="Operator">.</span><span class="Identifier">arabic</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="DecNumber">2</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">romantype</span><span class="Operator">.</span><span class="Identifier">roman</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="StringLit">&quot;II&quot;</span></pre>
 
 </dd>
-</div>
-<div id="useRomanCache,bool,bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#useRomanCache%2Cbool%2Cbool"><span class="Identifier">useRomanCache</span></a><span class="Other">(</span><span class="Identifier">state</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">;</span> <span class="Identifier">clear</span><span class="Other">:</span> <span class="Identifier">bool</span> <span class="Other">=</span> <span class="Identifier">true</span><span class="Other">)</span> {.
-    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<a id="toRoman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#toRoman%2Cint"><span class="Identifier">toRoman</span></a><span class="Other">(</span><span class="Identifier">n</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Enable/disable and generates/clears searchable tables for roman / arabic  numerals for values 1..999. Can be used for &gt; 1000 (for their basis).
+Converts an integer to the Roman type.
 <p><strong class="examples_text">Example:</strong></p>
-<pre class="listing"><span class="Keyword">import</span> <span class="Identifier">romannumerals</span>
-<span class="Identifier">useRomanCache</span><span class="Punctuation">(</span><span class="Punctuation">)</span></pre>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">roman</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="FloatNumber">33.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">roman</span><span class="Operator">.</span><span class="Identifier">roman</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="StringLit">&quot;XXXIII&quot;</span></pre>
 
 </dd>
-</div>
+<a id=">,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3E%2CRoman%2CRoman"><span class="Identifier">`&gt;`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">firstroman</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="StringLit">&quot;XXXV&quot;</span><span class="Operator">.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">secondroman</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="FloatNumber">120.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">secondroman</span><span class="Whitespace"> </span><span class="Operator">&gt;</span><span class="Whitespace"> </span><span class="Identifier">firstroman</span></pre>
+
+</dd>
+<a id="<,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3C%2CRoman%2CRoman"><span class="Identifier">`&lt;`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="<=,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3C%3D%2CRoman%2CRoman"><span class="Identifier">`&lt;=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id=">=,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3E%3D%2CRoman%2CRoman"><span class="Identifier">`&gt;=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="==,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%3D%3D%2CRoman%2CRoman"><span class="Identifier">`==`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="+=,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2B%3D%2CRoman%2CRoman"><span class="Identifier">`+=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="+=,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2B%3D%2CRoman%2Cint"><span class="Identifier">`+=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">rnf</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="FloatNumber">20.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Identifier">rnf</span><span class="Whitespace"> </span><span class="Operator">+=</span><span class="Whitespace"> </span><span class="DecNumber">2151</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Operator">$</span><span class="Identifier">rnf</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="StringLit">&quot;MMCLXXI&quot;</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Identifier">rnf</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="FloatNumber">2171.</span><span class="Identifier">toRoman</span></pre>
+
+</dd>
+<a id="-=,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#-%3D%2CRoman%2CRoman"><span class="Identifier">`-=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="-=,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#-%3D%2CRoman%2Cint"><span class="Identifier">`-=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="*=,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2A%3D%2CRoman%2CRoman"><span class="Identifier">`*=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="*=,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2A%3D%2CRoman%2Cint"><span class="Identifier">`*=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="!=,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%21%3D%2CRoman%2CRoman"><span class="Identifier">`!=`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="-,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#-%2CRoman%2CRoman"><span class="Identifier">`-`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="-,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#-%2CRoman%2Cint"><span class="Identifier">`-`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="-,int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#-%2Cint%2CRoman"><span class="Identifier">`-`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="+,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2B%2CRoman%2CRoman"><span class="Identifier">`+`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="+,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2B%2CRoman%2Cint"><span class="Identifier">`+`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="+,int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2B%2Cint%2CRoman"><span class="Identifier">`+`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="*,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2A%2CRoman%2CRoman"><span class="Identifier">`*`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="*,int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2A%2Cint%2CRoman"><span class="Identifier">`*`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="*,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%2A%2CRoman%2Cint"><span class="Identifier">`*`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="div,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#div%2CRoman%2CRoman"><span class="Identifier">`div`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="div,int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#div%2Cint%2CRoman"><span class="Identifier">`div`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="div,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#div%2CRoman%2Cint"><span class="Identifier">`div`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="mod,Roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#mod%2CRoman%2CRoman"><span class="Identifier">`mod`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">,</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="mod,int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#mod%2Cint%2CRoman"><span class="Identifier">`mod`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="mod,Roman,int"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#mod%2CRoman%2Cint"><span class="Identifier">`mod`</span></a><span class="Other">(</span><span class="Identifier">a</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">;</span> <span class="Identifier">b</span><span class="Other">:</span> <span class="Identifier">int</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">KeyError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="$,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#%24%2CRoman"><span class="Identifier">`$`</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">rt</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="FloatNumber">20.</span><span class="Identifier">toRoman</span><span class="Whitespace">
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="Operator">$</span><span class="Identifier">rt</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="StringLit">&quot;XX&quot;</span></pre>
+
+</dd>
+<a id="newRoman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#newRoman"><span class="Identifier">newRoman</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Roman</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Generates a new Roman [arabic:0, roman: &quot;&quot;].
+<p><strong class="examples_text">Example:</strong></p>
+<pre class="listing"><span class="Keyword">var</span><span class="Whitespace"> </span><span class="Identifier">newr</span><span class="Whitespace"> </span><span class="Operator">=</span><span class="Whitespace"> </span><span class="Identifier">newRoman</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Whitespace">
+</span><span class="Identifier">newr</span><span class="Whitespace"> </span><span class="Operator">+=</span><span class="Whitespace"> </span><span class="DecNumber">1</span><span class="Whitespace">
+</span><span class="Identifier">newr</span><span class="Whitespace"> </span><span class="Operator">*=</span><span class="Whitespace"> </span><span class="DecNumber">10</span><span class="Whitespace">
+
+</span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="StringLit">&quot;X&quot;</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="Operator">$</span><span class="Identifier">newr</span></pre>
+
+</dd>
+<a id="int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#int%2CRoman"><span class="Identifier">int</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+
+
+</dd>
+<a id="arabic,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#arabic%2CRoman"><span class="Identifier">arabic</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Same as int
+
+</dd>
+<a id="roman,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#roman%2CRoman"><span class="Identifier">roman</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<dd>
+
+Same as $
+
+</dd>
 
 </dl></div>
 
@@ -613,7 +567,7 @@ Enable/disable and generates/clears searchable tables for roman / arabic  numera
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-12-20 10:19:18 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-12-20 10:29:29 UTC</small>
       </div>
     </div>
   </div>
