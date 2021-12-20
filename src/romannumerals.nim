@@ -1,9 +1,10 @@
 import
     strutils,
+    parseutils,
     tables
 
 type
-    Roman*{.borrow: `.`.} = distinct tuple
+    Roman{.borrow: `.`.} = distinct tuple
         arabic: int
         roman: string
 const
@@ -50,7 +51,7 @@ proc arabicToRoman*(n: int): string =
                     modArray[2]] & ones[modArray[3]]
     else:
         raise newException(ValueError, "Value can not be negative")
-    
+
 
 
 proc useRomanCache*(state: bool = true, clear: bool = true) =
@@ -77,25 +78,29 @@ proc useRomanCache*(state: bool = true, clear: bool = true) =
 proc startsWithIn(s: string, a: openArray[string]): (int, string) =
     let aLen = a.len
     for i in 1..aLen:
-        let index = aLen - i 
+        let index = aLen - i
         if s.startsWith(a[index]):
             return (index, a[index])
-    return (-1,"")
+    return (-1, "")
 
 
 proc romanToArabic*(s: string): int =
     ##Converts a roman string to an int.
     runnableExamples:
-        var arabic= romanToArabic("XXXV")
+        var arabic = romanToArabic("XXXV")
         doAssert arabic == 35
 
-    var 
+    var
         arabic = 0
         roman = s.toUpperAscii
-    while roman[0] == 'M':
-        arabic += 1000
-        roman = roman[1..^1]
-    
+
+#[     while roman[0] == 'M':
+    arabic += 1000
+    roman = roman[1..^1] ]#
+    let mcount = roman.skipWhile({'M'})
+    arabic = 1000 * mcount
+    roman = roman[mcount..^1]
+
     if romanNumeralCache:
         try:
             return arabic + romanArabicTable[roman]
@@ -103,7 +108,7 @@ proc romanToArabic*(s: string): int =
             raise newException(ValueError, "an illformed numeral: $1" % [s])
     else:
         for p in [(100, hundreds), (10, tens), (1, ones)]:
-            let 
+            let
                 (k, v) = p
                 (r, ep) = roman.startsWithIn(v)
             if r > 0:
@@ -142,7 +147,7 @@ proc toRoman*(n: int): Roman =
         doAssert roman.roman == "XXXIII"
     return (n, arabicToRoman(n)).Roman
 
-proc `>`*(a, b: Roman): bool=
+proc `>`*(a, b: Roman): bool =
     runnableExamples:
         var firstroman = "XXXV".toRoman
         var secondroman = 120.toRoman
@@ -160,7 +165,7 @@ proc `>=`*(a, b: Roman): bool =
     return a.arabic >= b.arabic
 
 proc `==`*(a, b: Roman): bool =
-    return a.arabic == b.arabic
+    return a.arabic == b.arabic #and a.roman == b.roman
 
 proc `+=`*(a: var Roman, b: Roman) =
     let r = a.arabic + b.arabic
@@ -169,9 +174,9 @@ proc `+=`*(a: var Roman, b: Roman) =
 proc `+=`*(a: var Roman, b: int) =
     runnableExamples:
         var rnf = 20.toRoman
-        rnf += 2
-        doAssert $rnf == "XXII"
-        doAssert rnf == 22.toRoman
+        rnf += 2151
+        doAssert $rnf == "MMCLXXI"
+        doAssert rnf == 2171.toRoman
     let r = a.arabic + b
     a = (r, arabicToRoman(r)).Roman
 
@@ -192,7 +197,7 @@ proc `*=`*(a: var Roman, b: int) =
     a = (r, arabicToRoman(r)).Roman
 
 proc `!=`*(a, b: Roman): bool =
-    return a.arabic != b.arabic
+    return a.arabic != b.arabic or a.roman != b.roman
 
 proc `-`*(a, b: Roman): Roman =
     let r = a.arabic - b.arabic
@@ -260,72 +265,24 @@ proc `$`*(r: Roman): string =
         doAssert $rt == "XX"
     return r.roman
 
+
 proc newRoman*: Roman =
     ##Generates a new Roman [arabic:1, roman: "I"].
     runnableExamples:
         var newr = newRoman()
-        newr *= 10 
-        newr -= 1 
+        newr *= 10
+        newr -= 1
         doAssert "IX" == $newr
     return (1, "I").Roman
 
+proc toInt*(r:Roman):int=
+    return r.arabic
 
-when isMainModule:
-    useRomanCache()
-    echo arabicRomanTable
-    for i in countup(1, 3120):
-        discard i.arabicToRoman
-    echo arabicToRoman(5106)
-    echo arabicToRoman(5107)
+proc arabic*(r:Roman):int=
+    ##Same as toInt
+    return r.arabic
 
-    doAssert arabicToRoman(99) == "XCIX"
-    doAssert arabicToRoman(994) == "CMXCIV"
+proc roman*(r:Roman):string=
+    ##Same as $
+    return r.roman
 
-    var rmn: string
-    try:
-        rmn = arabicToRoman(-34)
-    except ValueError:
-        rmn = "VII"
-    doAssert rmn == "VII"
-    echo romanToArabic("DLXXIV")
-    echo romanToArabic("XXIV")
-    doAssert romanToArabic("XXIV") == 24
-    doAssert romanToArabic("MXXViI", false) == 1027
-    var num: int
-    try:
-        num = romanToArabic("ViI", true)
-    except ValueError:
-        num = 9878
-    doAssert num == 9878
-    try:
-        num = romanToArabic("IC", true)
-    except ValueError:
-        num = 9878
-    echo num
-    doAssert num == 9878
-    var
-        a = 5.toRoman
-        b = "VI".toRoman
-        c = newRoman()
-    echo c
-    c = a + b
-    echo $c
-    doAssert "XI" == $ c
-    doAssert a < b
-    doAssert 10.toRoman < c
-    var d = c - "II".toRoman
-    doAssert d == "IX".toRoman
-    doAssert (d * 3) == "XXVII".toRoman
-    d += 3
-    doAssert d == "xii".toRoman
-    d -= 4
-    doAssert d.arabic == 8
-    doAssert d.roman == "VIII"
-
-
-    echo arabicRomanTable
-    useRomanCache(false)
-    echo arabicRomanTable
-    useRomanCache(true)
-    echo arabicRomanTable
-    echo "Success"
