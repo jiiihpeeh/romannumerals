@@ -135,11 +135,6 @@ function main() {
     title="useRomanCache(state: bool = true; clear: bool = true)">useRomanCache,<wbr>bool,<wbr>bool</a></li>
 
   </ul>
-  <ul class="simple nested-toc-section">toInt
-      <li><a class="reference" href="#toInt%2CRoman"
-    title="toInt(r: Roman): int">toInt,<wbr>Roman</a></li>
-
-  </ul>
   <ul class="simple nested-toc-section"><
       <li><a class="reference" href="#%3C%2CRoman%2CRoman"
     title="`&lt;`(a, b: Roman): bool"><,<wbr>Roman,<wbr>Roman</a></li>
@@ -175,6 +170,11 @@ function main() {
     title="`-`(a: Roman; b: int): Roman">-,<wbr>Roman,<wbr>int</a></li>
   <li><a class="reference" href="#-%2Cint%2CRoman"
     title="`-`(a: int; b: Roman): Roman">-,<wbr>int,<wbr>Roman</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">int
+      <li><a class="reference" href="#int%2CRoman"
+    title="int(r: Roman): int">int,<wbr>Roman</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">toRoman
@@ -535,8 +535,8 @@ Generates a new Roman [arabic:1, roman: &quot;I&quot;].
 </span><span class="Identifier">doAssert</span><span class="Whitespace"> </span><span class="StringLit">&quot;IX&quot;</span><span class="Whitespace"> </span><span class="Operator">==</span><span class="Whitespace"> </span><span class="Operator">$</span><span class="Identifier">newr</span></pre>
 
 </dd>
-<a id="toInt,Roman"></a>
-<dt><pre><span class="Keyword">proc</span> <a href="#toInt%2CRoman"><span class="Identifier">toInt</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
+<a id="int,Roman"></a>
+<dt><pre><span class="Keyword">proc</span> <a href="#int%2CRoman"><span class="Identifier">int</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
 
@@ -546,7 +546,7 @@ Generates a new Roman [arabic:1, roman: &quot;I&quot;].
 <dt><pre><span class="Keyword">proc</span> <a href="#arabic%2CRoman"><span class="Identifier">arabic</span></a><span class="Other">(</span><span class="Identifier">r</span><span class="Other">:</span> <span class="Identifier">Roman</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> <span><span class="Other">{</span><span class="Other pragmadots">...</span><span class="Other">}</span></span><span class="pragmawrap"><span class="Other">{.</span><span class="pragma"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span><span class="Other">.}</span></span></pre></dt>
 <dd>
 
-Same as toInt
+Same as int
 
 </dd>
 <a id="roman,Roman"></a>
@@ -566,7 +566,7 @@ Same as $
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2021-12-20 09:28:26 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2021-12-20 09:37:10 UTC</small>
       </div>
     </div>
   </div>

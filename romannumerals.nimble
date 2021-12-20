@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.4.6"
+version       = "0.4.7"
 author        = "juujaa"
 description   = "Convert and calculate between Arabic and Roman numbers/numerals"
 license       = "MIT"

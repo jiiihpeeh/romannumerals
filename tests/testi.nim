@@ -45,11 +45,13 @@ doAssert (d * 3) == "XXVII".toRoman
 d += 3
 doAssert d == "xii".toRoman
 d -= 4
-doAssert d.toInt == 8
+doAssert d.int == 8
 doAssert d.roman == "VIII"
 
 
 useRomanCache(false)
+for i in countup(1, 3120):
+    discard i.arabicToRoman
 useRomanCache(true)
 for i in countup(1, 3120):
     discard i.arabicToRoman

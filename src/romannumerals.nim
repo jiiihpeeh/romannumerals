@@ -275,11 +275,11 @@ proc newRoman*: Roman =
         doAssert "IX" == $newr
     return (1, "I").Roman
 
-proc toInt*(r:Roman):int=
+proc `int`*(r:Roman):int=
     return r.arabic
 
 proc arabic*(r:Roman):int=
-    ##Same as toInt
+    ##Same as int
     return r.arabic
 
 proc roman*(r:Roman):string=
