@@ -52,8 +52,6 @@ proc arabicToRoman*(n: int): string =
     else:
         raise newException(ValueError, "Value can not be negative")
 
-
-
 proc useRomanCache*(state: bool = true, clear: bool = true) =
     ## Enable/disable and generates/clears searchable tables for roman / arabic  numerals for values 1..999. Can be used for > 1000 (for their basis).
     runnableExamples:
@@ -73,8 +71,6 @@ proc useRomanCache*(state: bool = true, clear: bool = true) =
             arabicRomanTable = {0: ""}.toTable
             romanArabicTable = {"": 0}.toTable
 
-
-
 proc startsWithIn(s: string, a: openArray[string]): (int, string) =
     let aLen = a.len
     for i in 1..aLen:
@@ -92,29 +88,29 @@ proc romanToArabic*(s: string): int =
 
     var
         arabic = 0
-        roman = s.toUpperAscii
+        romanstr = s.toUpperAscii
 
 #[     while roman[0] == 'M':
     arabic += 1000
     roman = roman[1..^1] ]#
-    let mcount = roman.skipWhile({'M'})
+    let mcount = romanstr.skipWhile({'M'})
     arabic = 1000 * mcount
-    roman = roman[mcount..^1]
+    romanstr = romanstr[mcount..^1]
 
     if romanNumeralCache:
         try:
-            return arabic + romanArabicTable[roman]
+            return arabic + romanArabicTable[romanstr]
         except KeyError:
             raise newException(ValueError, "an illformed numeral: $1" % [s])
     else:
         for p in [(100, hundreds), (10, tens), (1, ones)]:
             let
                 (k, v) = p
-                (r, ep) = roman.startsWithIn(v)
+                (r, ep) = romanstr.startsWithIn(v)
             if r > 0:
                 arabic += r * k
-                roman = roman[ep.len..^1]
-    if roman.len > 0:
+                romanstr = romanstr[ep.len..^1]
+    if romanstr.len > 0:
         raise newException(ValueError, "an illformed numeral: $1" % [s])
 
     return arabic
@@ -265,15 +261,15 @@ proc `$`*(r: Roman): string =
         doAssert $rt == "XX"
     return r.roman
 
-
 proc newRoman*: Roman =
-    ##Generates a new Roman [arabic:1, roman: "I"].
+    ##Generates a new Roman [arabic:0, roman: ""].
     runnableExamples:
         var newr = newRoman()
+        newr += 1
         newr *= 10
-        newr -= 1
-        doAssert "IX" == $newr
-    return (1, "I").Roman
+        
+        doAssert "X" == $newr
+    return (0, "").Roman
 
 proc `int`*(r:Roman):int=
     return r.arabic
